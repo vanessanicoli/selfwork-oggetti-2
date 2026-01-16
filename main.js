@@ -46,15 +46,22 @@ let rubrica = {
     this.contacts.push({nome : nome_aggiunto, telefono : telefono_aggiunto});
     console.log(`${nome_aggiunto} salvato in rubrica`);
   },
+  
+  rimuovi_contatto : function(nome_rimosso){
+    console.log('---------- RIMUOVI CONTATTO ----------');
+    let index = this.contacts.findIndex( (contatto)=> contatto.nome == nome_rimosso );
+        if(index >= 0) {
+            this.contacts.splice(index,1);
+            console.log(`${nome_rimosso} rimosso dalla rubrica`);
+        }    
+        else {
+            console.log(`${nome_rimosso} non è un contatto salvato in rubrica`);
+        }
+    },
 
 //   modifica_contatto : function(nome_modificato){
 
 //   },
-
-//   rimuovi_contatto : function(nome_rimosso){
-
-//   },
-
 
 };
 
@@ -62,6 +69,8 @@ let rubrica = {
 rubrica.mostra_contatti();
 rubrica.mostra_contatto('Paola');
 rubrica.aggiungi_contatto('Gianluca', '333555555');
+rubrica.rimuovi_contatto('Lorenzo');
 
 rubrica.mostra_contatti();
+
 
