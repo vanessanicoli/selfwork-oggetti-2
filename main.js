@@ -31,7 +31,7 @@ let rubrica = {
   },
 
   mostra_contatto : function(nome_cercato){
-    console.log('--------------- CONTATTO --------------');
+    console.log('---------------- CONTATTO ---------------');
     let index = this.contacts.findIndex( (contatto)=> contatto.nome == nome_cercato );
     if(index >= 0) {
         console.log(`Nome: ${this.contacts[index].nome}, Telefono: ${this.contacts[index].telefono}`);
@@ -42,13 +42,13 @@ let rubrica = {
   },
 
   aggiungi_contatto : function(nome_aggiunto, telefono_aggiunto){
-    console.log('---------- AGGIUNGI CONTATTI ----------');
+    console.log('----------- AGGIUNGI CONTATTI -----------');
     this.contacts.push({nome : nome_aggiunto, telefono : telefono_aggiunto});
     console.log(`${nome_aggiunto} salvato in rubrica`);
   },
   
   rimuovi_contatto : function(nome_rimosso){
-    console.log('---------- RIMUOVI CONTATTO ----------');
+    console.log('------------ RIMUOVI CONTATTO ------------');
     let index = this.contacts.findIndex( (contatto)=> contatto.nome == nome_rimosso );
         if(index >= 0) {
             this.contacts.splice(index,1);
@@ -59,9 +59,17 @@ let rubrica = {
         }
     },
 
-//   modifica_contatto : function(nome_modificato){
-
-//   },
+  modifica_contatto : function(nome_modificato, telefono_modificato){
+    console.log('----------- MODIFICA CONTATTO -----------');
+    let index = this.contacts.findIndex( (contatto)=> contatto.nome == nome_modificato );
+    if(index >= 0) {
+        this.contacts[index].telefono = telefono_modificato;
+        console.log(`${nome_modificato} è stato modificato in rubrica`);
+    }    
+    else {
+        console.log(`${nome_modificato} non è un contatto salvato in rubrica`);
+    }
+  },
 
 };
 
@@ -70,7 +78,8 @@ rubrica.mostra_contatti();
 rubrica.mostra_contatto('Paola');
 rubrica.aggiungi_contatto('Gianluca', '333555555');
 rubrica.rimuovi_contatto('Lorenzo');
+rubrica.modifica_contatto('Jenny', '1234567892')
 
 rubrica.mostra_contatti();
 
-
+console.log(rubrica);
