@@ -41,9 +41,11 @@ let rubrica = {
     }
   },
 
-//   aggiungi_contatto : function(nome_aggiunto, telefono_aggiunto){
-
-//   },
+  aggiungi_contatto : function(nome_aggiunto, telefono_aggiunto){
+    console.log('---------- AGGIUNGI CONTATTI ----------');
+    this.contacts.push({nome : nome_aggiunto, telefono : telefono_aggiunto});
+    console.log(`${nome_aggiunto} salvato in rubrica`);
+  },
 
 //   modifica_contatto : function(nome_modificato){
 
@@ -59,3 +61,7 @@ let rubrica = {
 
 rubrica.mostra_contatti();
 rubrica.mostra_contatto('Paola');
+rubrica.aggiungi_contatto('Gianluca', '333555555');
+
+rubrica.mostra_contatti();
+
