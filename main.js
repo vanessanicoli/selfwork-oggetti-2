@@ -19,9 +19,11 @@ let rubrica = {
   mostra_contatti : function(){
     console.log('------------ LISTA CONTATTI ------------');
     if(this.contacts.length > 0) {
-        for(let i=0; i<this.contacts.length; i++){
-            console.log(`Nome: ${this.contacts[i].nome}, Telefono: ${this.contacts[i].telefono}`);
-        }
+        // for(let i=0; i<this.contacts.length; i++){
+        //     console.log(`Nome: ${this.contacts[i].nome}, Telefono: ${this.contacts[i].telefono}`);
+        // }
+        // ---- Alternativa con forEach ----
+        this.contacts.forEach( (contatto)=> console.log(`Nome: ${contatto.nome}, Telefono: ${contatto.telefono}`) );
     }
     else {
         console.log(`Non ci sono contatti salvati in rubrica`);
@@ -29,22 +31,31 @@ let rubrica = {
   },
 
   mostra_contatto : function(nome_cercato){
-
+    console.log('--------------- CONTATTO --------------');
+    let index = this.contacts.findIndex( (contatto)=> contatto.nome == nome_cercato );
+    if(index >= 0) {
+        console.log(`Nome: ${this.contacts[index].nome}, Telefono: ${this.contacts[index].telefono}`);
+    }    
+    else {
+        console.log(`${nome_cercato} non è un contatto salvato in rubrica`);
+    }
   },
 
-//   aggiungi_contatto : function(nome_cercato){
+//   aggiungi_contatto : function(nome_aggiunto, telefono_aggiunto){
 
 //   },
 
-//   modifica_contatto : function(nome_cercato){
+//   modifica_contatto : function(nome_modificato){
 
 //   },
 
-//   rimuovi_contatto : function(nome_cercato){
+//   rimuovi_contatto : function(nome_rimosso){
 
 //   },
 
 
 };
 
+
 rubrica.mostra_contatti();
+rubrica.mostra_contatto('Paola');
